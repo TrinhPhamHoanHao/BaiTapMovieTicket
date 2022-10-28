@@ -11,15 +11,15 @@ class HangGhe extends Component {
         disable = true;
       }
 
-      // let gheDangDat = "gheDangDat";
-      // let indexGheDangDat = this.props.danhSachGheDangDat.findIndex(gheDangDat=>gheDangDat.soGhe === ghe.soGhe);
-      // if(indexGheDangDat !== -1){
-      //   gheDangDat = 'gheDangChon';
-      // }
+      let gheDangDat = ""; 
+      let indexGheDangDat = this.props.danhSachGheDangDat.findIndex(gheDangDat=>gheDangDat.soGhe === ghe.soGhe);
+      if(indexGheDangDat !== -1){
+        gheDangDat = 'gheDangChon';
+      }
 
       return <button onClick={()=>{
-
-      }} disabled={disable} className={`ghe${gheDaDat} `} key={index}>
+        this.props.datGhe(ghe)
+      }} disabled={disable} className={`ghe${gheDaDat} ${gheDangDat}`} key={index}>
         {ghe.soGhe}
       </button>
     })
@@ -59,5 +59,15 @@ const mapStateToProps = (state) => ({
   danhSachGheDangDat: state.BaiTapMovieTicketReducer.danhSachGheDangDat
 })
 
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    datGhe: (ghe) =>{
+      dispatch({
+        type:"DAT_GHE",
+        ghe
+      })
+    }
+  }
+}
 
-export default connect(mapStateToProps)(HangGhe)
+export default connect(mapStateToProps,mapDispatchToProps)(HangGhe)

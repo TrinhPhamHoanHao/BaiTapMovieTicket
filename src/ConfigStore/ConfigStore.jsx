@@ -1,16 +1,11 @@
-// import {combineReducers} from 'redux';
-// import BaiTapMovieTicketReducer from '../redux/BaiTapMovieTicketReducer';
-// const rootReducer = combineReducers({
-//     BaiTapMovieTicketReducer
-// })
-// export default rootReducer;
 
 import {configureStore} from "@reduxjs/toolkit"
-import BaiTapMovieTicketReducer from "../redux/BaiTapMovieTicketReducer"
+import {BaiTapMovieTicketReducer} from "../redux/BaiTapMovieTicketReducer"
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
         BaiTapMovieTicketReducer
 
     }
 })
+export default store 
